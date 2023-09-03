@@ -143,15 +143,115 @@ int main()
 
     // }
 
-    for(int row=0; row<4; row=row+1)
-    { 
-        for(int col=0; col<4; col=col+1)
-        {
-            cout<<"*";
+
+    //Square rectangle
+
+    // for(int row=0; row<4; row=row+1)
+    // { 
+    //     for(int col=0; col<4; col=col+1)
+    //     {
+    //         cout<<"*";
+    //     }
+    //     cout<<endl;
+
+    // }
+
+    //Hollow recatangle
+
+    // for(int row=0; row<3; row=row+1){
+    //     //first row and last row toh print kardo 5 *
+    //     if(row == 0 || row == 2){
+    //         for(int col=0; col<5; col++) {
+    //             cout<<"*";
+    //         }
+    //     }
+    //     else{
+    //         //remainging middle rows
+    //         //first star
+    //         cout<<'*';
+    //         //spaces
+    //         for(int i=0; i<3; i=i+1){
+    //             cout<< " ";
+    //         }
+    //         //last star
+    //         cout<< "*";
+    //     }
+    //     cout<< endl;
+    // }
+
+    // int rowCount, colCount;
+    // cin>> rowCount;
+    // cin>> colCount;
+
+    // for(int row=0; row<rowCount; row=row+1){
+    //     //first row and last row toh print kardo 5 *
+    //     if(row == 0 || row == rowCount-1){
+    //         for(int col=0; col<colCount; col++) {
+    //             cout<<"*";
+    //         }
+    //     }
+    //     else{
+    //         //remainging middle rows 
+    //         //first star
+    //         cout<<"* ";
+    //         //spaces
+    //         for(int i=0; i<colCount-2; i=i+1){
+    //             cout<<" ";
+    //         }
+    //         //last star
+    //         cout<<"* ";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // HALF PYRAMID
+
+    //no of rows 
+    // int n;
+    // cin>>n;
+
+    // for(int row=0; row<n; row=row+1) {
+    //     for(int col=0; col<row+1; col=col+1){
+    //         cout<<"*";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // INVERTED HALF PYRAMID
+
+    // int n;
+    // cin>>n;
+
+    // for (int row=0; row<n;  row=row+1) {
+    //     for(int col=0; col<n-row; col=col+1){
+    //         cout<<"*";
+    //     }
+    //     cout<<endl;
+    // }
+
+    //NUMERIC HALF PYRAMID
+    //no of rows = n
+    // int n;
+    // cin>>n;
+    // for (int row=0; row<n; row=row+1){
+    //     for(int col=0; col<row+1; col=col+1) {
+    //         cout<<col+1;
+    //     }
+    //     cout<<endl;
+    // }
+
+    // INVERTED NUMERIC HALF INVERTED 
+    int n;
+    cin>>n;
+    for (int row=0; row<n; row=row+1){
+        for(int col=0; col<n-row; col=col+1) {
+            cout<<col+1;
         }
         cout<<endl;
-
     }
+
+
+
 
 
     
