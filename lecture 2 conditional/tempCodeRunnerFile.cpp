@@ -1,1 +1,0 @@
-    if(cout<<"love babbar<<endl"){
