@@ -1,0 +1,1 @@
+ printf("Sum of all the elements of an array: %d", sum);
