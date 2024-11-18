@@ -30,18 +30,56 @@ class stack {
     }
 
     void pop(){
+        if(top==-1){
+            //stack is empty
+            cout<<"Stack underflow, cant delete element" << endl;
+        }
+        else{
+            //stack is not empty
+            top--;  
+        }
 
     }
 
     int getTop() {
+        if(top==-1){
+            cout<<"There is not element in stack" << endl;
+        }
+        else{
+            return arr[top];
+        }
 
     }
-
+    // return no of valid element present in stack
     int getSize(){
-
+        return top + 1; 
+        
     }
 
     bool isEmpty(){
+        if(top == -1){
+            return true;
+        }
+        else{
+            return false;
+        }
 
     }
 }; 
+
+int main(){
+    //creation 
+    stack s(10);
+
+    //insertion
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    s.push(40);
+
+    while(!s.isEmpty()){
+        cout<<s.getTop() << " ";
+        s.pop();
+    }
+    return 0;
+}
