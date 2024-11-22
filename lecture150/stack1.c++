@@ -67,6 +67,13 @@ class Stack{
 }
 
 int main() {
-    
+    Stack s(10);
+
+    //insertion
+    s.push1(10);
+    s.push1(20);
+    s.push1(30);
+    s.push1(40);
+
     return 0;
 }
