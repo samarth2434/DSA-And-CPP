@@ -66,7 +66,7 @@ class Deque{
             rear = -1;
         }
         else if(front == size-1){
-            arr[front] = -1;
+            arr[front] = -1; 
             front =0;
         }
         else{
