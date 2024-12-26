@@ -10,7 +10,7 @@ int binarySearch(int arr[], int size, int target){
     while(start <= end){
         int element = arr[mid];
 
-        if(element == target){
+        if(element == target){ //element found then return index 
             return mid;
         }
         else if(target < element){
@@ -30,7 +30,7 @@ int binarySearch(int arr[], int size, int target){
 int main(){
     int arr[] = {2,4,6,8,10,12,14};
     int size = 7;
-    int target = 2;
+    int target = 10;
 
     int indexOftarget = binarySearch(arr, size, target);
 
