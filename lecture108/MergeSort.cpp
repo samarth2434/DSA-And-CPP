@@ -28,10 +28,37 @@ void merge(int* arr, int s, int e){
     }
 
     //merge logic 
+    int leftIndex = 0;
+    int rightIndex = 0;
+    int mainArrayIndex = s;
+
+    while(leftIndex < len1 && rightIndex < len2){
+        //copy the array
+        if(left[leftIndex] < right[rightIndex]){
+        arr[mainArrayIndex++] = left[leftIndex++]; 
+    }
+    else{
+        //copy the array from the right side 
+        arr[mainArrayIndex++] = right[rightIndex++]; 
+    }
+}
+    //copy the logic for left array
+    while(leftIndex < len1){
+        arr[mainArrayIndex++] = left[leftIndex++];
+    }
+
+    //copy the logic for right array
+    while(rightIndex < len2){
+    arr[mainArrayIndex++] = right[rightIndex++];
+    }
+
+    //Now your array is sorted 
+
+
 }
 
 //using recursion call
-int mergeSort(int* arr, int s, int e){
+void mergeSort(int* arr, int s, int e){
     //base case
     //if single element is present so element is sorted we have to do nothing 
     //s == e--> for single element start and end index equal hoga 
@@ -57,7 +84,15 @@ int main(){
 
     int s = 0;
     int e = n-1;
+    //calling the mergesort function 
     mergeSort(arr, s,e);
+
+
+//printing the array
+    for(int i=0; i<n; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
 
     return 0;
 }
