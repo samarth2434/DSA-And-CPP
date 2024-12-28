@@ -14,7 +14,7 @@ void merge(int* arr, int s, int e){
     int* left = new int[len1];
     int* right = new int[len2]; 
 
-    //copy values 
+    //left aur right ke andar ke copy values karli
     int k = s; // arr ka starting index s hai 
     for(int i=0; i<len1; i++){
         left[i] = arr[k];
@@ -42,12 +42,12 @@ void merge(int* arr, int s, int e){
         arr[mainArrayIndex++] = right[rightIndex++]; 
     }
 }
-    //copy the logic for left array
+    //copy logic for left array bachi hue
     while(leftIndex < len1){
         arr[mainArrayIndex++] = left[leftIndex++];
     }
 
-    //copy the logic for right array
+    //copy logic for right array bachi hue
     while(rightIndex < len2){
     arr[mainArrayIndex++] = right[rightIndex++];
     }
