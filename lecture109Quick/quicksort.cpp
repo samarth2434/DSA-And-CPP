@@ -23,7 +23,7 @@ int partition(int arr[], int s, int e){
    int j = e;
 
    while(i < pivotIndex && j > pivotIndex){
-    while(arr[i] < pivotElement){
+    while(arr[i] <= pivotElement){
       i++;  
     }
     while(arr[j] > pivotElement){
@@ -39,7 +39,7 @@ int partition(int arr[], int s, int e){
     return pivotIndex;
 
 }
-//quickSort function 
+//quickSort function for recursion 
 void quickSort(int arr[], int s, int e){
    //base case 
    if(s>=e)
