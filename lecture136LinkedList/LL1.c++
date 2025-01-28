@@ -17,6 +17,26 @@ class Node{
         this->data = data;
         this->next = NULL;
     }
+
+    //TO do: write a destructor to delete the node 
+    ~Node(){
+        //write your code here
+        cout<<"Node with value: " << this -> data << "deleted" << endl;
+    }
+    // Destructor
+    // ~LinkedList() {
+    //     Node* current = head;
+    //     Node* nextNode = nullptr;
+
+    //     while (current != nullptr) {
+    //         nextNode = current->next; // Save the next node
+    //         std::cout << "Deleting node with data: " << current->data << std::endl;
+    //         delete current;          // Delete the current node
+    //         current = nextNode;      // Move to the next node
+    //     }
+
+    //     head = nullptr; // Ensure head is null after deletion
+    // }
 };
 
 
@@ -124,6 +144,67 @@ newNode -> next = curr;
 prev -> next = newNode;
 }
 
+//deletion (first node (head) and last node (tail))
+// delete the first node 
+void deleteNode(int position, Node* &head, Node* &tail){
+    // if LL is empty 
+    if(head == NULL){
+        cout<<"cannot delete, LL is empty ";
+        return;
+    }
+    // if we have to delete the first node 
+    if(position == 1){
+        // step1 : create a temp
+        Node* temp = head;
+        //step 2: update the head 
+        head = head -> next;
+        temp->next = NULL;
+        //step 3: delete the node name as temp
+        delete temp;
+        return;
+    }
+
+    //next case  -- delete the last node 
+    // find len  
+    int len = findLength(head);
+    //deleting the last node name as a tail 
+    if(position == len){
+        //step 1: find the prev 
+        int i=1;
+        Node* prev = head; 
+        while(i < position-1){
+            prev = prev -> next;
+            i++;
+        }
+        //step 2: prev ke next ko null kardo becasue we have to cut the link 
+        prev->next = NULL;
+        //step 3: create a temp and update a tail 
+        Node* temp = tail;
+        tail = prev;
+        //step 4: delete the node 
+        delete temp;
+
+        return;
+    }
+
+    //delete the middle / position node 
+    //step 1: find the prev and curr
+    int i = 1;
+    Node* prev = head;
+    while(i<position-1){
+        prev = prev -> next;
+        i++;
+    }
+    Node* curr = prev -> next;
+
+    //step2: 
+    prev->next = curr->next;
+    //step3:
+    curr->next = NULL;
+    //step4:
+    delete curr;
+}
+
 
 int main(){
 
@@ -142,12 +223,17 @@ cout<<endl;
 cout<<"head: " << head -> data << endl;
 cout<<"tail: " << tail -> data << endl;
 
-insertAtPosition(101, 6, head, tail);
-cout<<endl; 
+// insertAtPosition(101, 6, head, tail);
+// cout<<endl; 
+// print(head);
+// cout<<endl; 
+// cout<<"head: " << head -> data << endl;
+// cout<<"tail: " << tail -> data << endl;
+
+deleteNode(2, head, tail);
+cout<<endl;
 print(head);
-cout<<endl; 
-cout<<"head: " << head -> data << endl;
-cout<<"tail: " << tail -> data << endl;
+cout<<endl;
 
 return 0;
 
