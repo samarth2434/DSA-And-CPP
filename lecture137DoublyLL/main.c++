@@ -18,6 +18,10 @@ class Node{
         this->prev = NULL;
         this->next = NULL;
     }
+
+    ~Node(){
+        cout<<"Node with value: "<< this -> data<<" deleted "<<endl;
+    }
 };
 
 //printing function for print the LL
@@ -134,6 +138,79 @@ void insertAtPosition(Node* &head, Node* &tail, int data, int position){
 
 }
 
+//----------Deletion 
+void deleteFromPos(Node* &head, Node* &tail, int position){
+    if(head == NULL){
+        cout<<"LL is empty";
+        return;
+    }
+    if(head -> next == NULL){
+        //if single Node present so how we can delete?
+        Node* temp = head;
+        head = NULL;
+        tail = NULL;
+        delete temp;
+        return;
+    }
+    int len = getLength(head);
+    if(position > len){
+        cout<<"please enter the valid len"<<endl;
+        return;
+    }
+
+    if(position == 1){
+        //want to delete the first node 
+        //step1:create temp
+        Node* temp = head;
+        //step2: update head to the next node 
+        head = head -> next; 
+        //step3: break the link between temp and head
+        head -> prev = NULL;
+        temp -> next = NULL;
+        //step4:delete the temp node because vo alag ho gaya hai 
+        delete temp;
+        return;
+    }
+    //find the length 
+    //last node check karlo
+    if(position == len){
+        // delete last node (we have to delete last node)
+         //step1: create a temp
+         Node* temp = tail;
+         //step2: tail update 
+         tail = tail->prev;
+         //step3: we have to break the link 
+         temp -> prev = NULL;
+         tail -> next = NULL;
+         //step5:delete temp
+         delete temp;
+         return;
+
+         // delete from the middle pos of the LL
+         //step1: find left, right, curr
+         int i=1;
+         Node* left = head;
+         while(i < position - 1){
+            left = left -> next;
+            i++;
+         }
+         Node* curr = left -> next;
+         Node* right = curr -> next;
+
+         //step2:
+         left -> next = right;
+         //step3: 
+         right -> prev = left;
+         //step4: break the link
+         curr -> prev = NULL;
+         curr -> next = NULL;
+
+         //step5: delete curr
+         delete curr;
+
+}
+}
+
 
 int main(){
 
@@ -152,30 +229,37 @@ int main(){
     third -> prev = second;
 
     //call the function print 
-    print(first);
-    cout<<endl;
+    // print(first);
+    // cout<<endl;
     
     //insert at head 
     insertAtHead(head, tail, 101);
 
-    cout<<endl;
-    print(head);
+    //cout<<endl;
+    // print(head);
 
-    cout<<endl;
+    // cout<<endl;
 
     //insert at tail 
-    insertAtTail(head, tail, 102);
+    insertAtTail(head, tail, 501);
 
-    cout<<endl;
-    print(head);
+    // cout<<endl;
+    // print(head);
 
-    cout<<endl;
+    // cout<<endl;
 
     //insert at position 
-    insertAtPosition(head, tail, 202, 2);
+    insertAtPosition(head, tail, 401, 3);
 
     cout<<endl;
     print(head);
+    cout<<endl;
+
+    deleteFromPos(head,tail,3);
+    
+    cout<<endl;
+    print(head);
+    cout<<endl;
 
 
     return 0;
