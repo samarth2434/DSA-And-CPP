@@ -205,6 +205,34 @@ void deleteNode(int position, Node* &head, Node* &tail){
     delete curr;
 }
 
+//-----------reverse function using loop 
+Node* reverseusingLoop(Node* head){
+    Node* prev  NULL;
+    Node* curr = head;
+
+    while(curr != NULL){
+        Node* temp = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        curr = temp;
+    }
+    return prev;
+}
+
+//----------- reverse function using recursion
+Node* reverseusingRecursion(Node* &prev, Node* &curr){
+    if(curr == NULL){
+        //This is condition when we have to stop it means LL reverse ho chuki 
+        return prev;
+    }
+    //we have to solve on;y one case then recursion will take care the process and repeat 
+    Node* forward = curr->next; //forward node create karli 
+    curr -> next = prev;
+
+    //now recursion will handle 
+    reverseusingRecursion(curr, forward);
+}
+
 
 int main(){
 
@@ -213,9 +241,9 @@ Node* head = NULL;
 Node* tail = NULL;
 
 insertAtHead(head,tail,20);
-insertAtHead(head,tail,30);
-insertAtHead(head,tail,40);
 insertAtHead(head,tail,50);
+insertAtHead(head,tail,60);
+insertAtHead(head,tail,90);
 insertAtTail(head,tail,77);
 
 print(head);
@@ -230,13 +258,19 @@ cout<<"tail: " << tail -> data << endl;
 // cout<<"head: " << head -> data << endl;
 // cout<<"tail: " << tail -> data << endl;
 
-deleteNode(2, head, tail);
+// deleteNode(2, head, tail);
+// cout<<endl;
+// print(head);
+cout<<endl;
+
+Node* prev = NULL;
+Node* curr = head;
+//-----call reverse function 
+head = reverseusingRecursion(prev, curr); //we have to pass [prev and curr] because there value is change 
 cout<<endl;
 print(head);
 cout<<endl;
 
 return 0;
-
-
 
 }
