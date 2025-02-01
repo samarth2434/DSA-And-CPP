@@ -22,7 +22,7 @@ class Node{
 //print function to run the Linked list 
 void print(Node* & head){
 
-    Node* temp = head;
+    Node* temp = head; //temp banalo it is good pratice
     while(temp != NULL){
         cout<<temp->data<<" ";  //print data
         temp = temp->next;      //pointer point to next 
