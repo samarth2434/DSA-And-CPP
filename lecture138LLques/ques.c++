@@ -92,6 +92,32 @@ Node* reverseKNodes(Node* &head, int k){
     return prev;
 }
 
+//check loop is present or not 
+bool checkForLoop(Node* &head){
+    if(head == NULL){
+        cout<<"LL is empty"<<endl;
+        return false;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast -> next;
+            slow = slow -> next;
+        }
+        if(slow == fast){
+            //loop present 
+            return true;
+        }
+    }
+    //fast null hogaya
+    return false;
+
+}
+
 int main() {
     // Creating nodes
     Node* head = new Node(10);
@@ -100,6 +126,10 @@ int main() {
     Node* fourth = new Node(40);
     Node* fifth = new Node(50);
     Node* sixth = new Node(60);
+    Node* seventh = new Node(70);
+    Node* eighth = new Node(80);
+    Node* ninth = new Node(90);
+
 
     // Linking nodes
     head->next = second;
@@ -107,17 +137,23 @@ int main() {
     third->next = fourth;
     fourth->next = fifth;
     fifth->next = sixth;
+    sixth->next = seventh;
+    seventh->next = eighth;
+    eighth->next = ninth;
+    ninth->next = fifth;
 
     // Print linked list
-    print(head);
+    // print(head);
 
     //call 
-    head = reverseKNodes(head, 2);
-    print(head);
+    // head = reverseKNodes(head, 2);
+    // print(head);
 
     // Get and print middle node
     // cout<<"Middle Node is: "<< getMiddle(head)->data<<endl;
     
+    //-------print the loop is present or not 
+    cout<<"Loop is present or not: "<<checkForLoop(head);
 
     return 0;
 }
