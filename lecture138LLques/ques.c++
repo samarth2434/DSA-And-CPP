@@ -117,6 +117,67 @@ bool checkForLoop(Node* &head){
     return false;
 
 }
+//check loop is present or not 
+Node* startingPointLoop(Node* &head){
+    if(head == NULL){
+        cout<<"LL is empty"<<endl;
+        return NULL;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast -> next;
+            slow = slow -> next;
+        }
+        if(slow == fast){
+            //loop present 
+            slow = head;
+            break;
+        }
+    }
+   while(slow != fast){
+    slow = slow->next;
+    fast = fast->next;
+   }
+   return slow;
+
+}
+//--------remove loop function
+Node* removeLoop(Node* &head){
+    if(head == NULL){
+        cout<<"LL is empty"<<endl;
+        return NULL;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != NULL){
+        fast = fast->next;
+        if(fast != NULL){
+            fast = fast -> next;
+            slow = slow -> next;
+        }
+        if(slow == fast){
+            //loop present 
+            slow = head;
+            break;
+        }
+    }
+    Node* prev = fast;
+        while(slow != fast){
+            prev = fast;
+        slow = slow->next;
+        fast = fast->next;
+   }
+   prev -> next = NULL;
+   return slow;
+
+}
 
 int main() {
     // Creating nodes
@@ -153,7 +214,17 @@ int main() {
     // cout<<"Middle Node is: "<< getMiddle(head)->data<<endl;
     
     //-------print the loop is present or not 
-    cout<<"Loop is present or not: "<<checkForLoop(head);
+    cout<<"Loop is present or not: "<<checkForLoop(head)<<endl;
 
+    //-------starting point of the loop
+    cout<<"Staring point of the loop is: "<<startingPointLoop(head) -> data<<endl;
+     
+    //-------Remove loop
+    removeLoop(head);
+    print(head);
+
+    //-------print the loop is present or not 
+    cout<<"Loop is present or not: "<<checkForLoop(head)<<endl;
+    
     return 0;
 }
