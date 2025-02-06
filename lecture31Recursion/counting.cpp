@@ -13,7 +13,7 @@ void print(int n){
 
     //recursive relation 
     print(n-1);
-    cout<< n << endl;
+    cout<< n << endl; 
 }
 
 int mian(){
