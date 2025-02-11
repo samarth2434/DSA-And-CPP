@@ -30,7 +30,7 @@ void merge(int* arr, int s, int e){
     int rightIndex = 0;
     int mainArrayIndex = s;
 
-    while(leftIndex < len1 && rightIndex < len2){
+    while(leftIndex < len1 && rightIndex < len2){ //limit me he ho
         //copy the array
         if(left[leftIndex] < right[rightIndex]){
         arr[mainArrayIndex++] = left[leftIndex++]; 
@@ -41,7 +41,7 @@ void merge(int* arr, int s, int e){
     }
 }
     //copy logic for left array bachi hue
-    while(leftIndex < len1){
+    while(leftIndex < len1){ //len jada ho
         arr[mainArrayIndex++] = left[leftIndex++];
     }
 
