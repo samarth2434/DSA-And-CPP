@@ -15,6 +15,7 @@ int partition(int arr[], int s, int e){
     }
   }
   //jab main loop se bahar hua toh mere pass pivot ki right position ka index ready hai
+  //place pivot at right pos done
   int rightIndex = s + count;
   swap(arr[pivotIndex], arr[rightIndex]);
   pivotIndex = rightIndex;
@@ -34,7 +35,7 @@ int partition(int arr[], int s, int e){
     //A-> you found the element to swap
     //B-> no need to swap 
     if(i < pivotIndex && j > pivotIndex)
-    swap(arr[i], arr[j]); 
+    swap(arr[i++], arr[j--]); 
    }
     return pivotIndex;
 
@@ -42,7 +43,7 @@ int partition(int arr[], int s, int e){
 //quickSort function for recursion 
 void quickSort(int arr[], int s, int e){
    //base case 
-   if(s>=e)
+   if(s>=e) //zero element hoge jab bhi sorted manunga ya ek element hoga jab bhi sorted 
    return ; 
 
    //partition logic , return pivotIndex
@@ -52,7 +53,7 @@ void quickSort(int arr[], int s, int e){
    //pivot element ke left me 
    quickSort(arr, s, p-1);
 
-   //right
+   //right part sort 
    quickSort(arr, p+1, e);
 }
 
@@ -60,9 +61,7 @@ int main(){
     int arr[] = {8,1,3,4,20,50,30};
     int n=7;
 
-    int s = 0;
-    int e = n-1;
-    quickSort(arr, s, e);
+    quickSort(arr, 0, n-1); // s=0 and e=n-1
 
     //print 
     for(int i=0; i<n; i++) {
