@@ -1,6 +1,7 @@
 #include<iostream> 
 using namespace std;
 
+//Find the len function 
 int getLength(char name[]){
     int length = 0;
     int i =0;
@@ -11,6 +12,20 @@ int getLength(char name[]){
 
     }
     return length;
+}
+
+//Reverse string function 
+int reverseCharArray(char name[]){
+    int i = 0;
+    int n = getLength(name);
+    int j = n-1;
+
+    while(i<=j){  //i>j - we have to stop
+        swap(name[i], name[j]);
+        i++;
+        j--;
+
+    }
 }
 
 int main(){
@@ -43,10 +58,16 @@ int main(){
     // cin.getline(arr, 50);
     // cout<<arr;
 
-    //------------find the length
+    //------------find the length call 
     char name[100];
     cin >> name;
 
     cout<<"Length is: " << getLength(name) << endl;
+
+    //reverse fun call
+    cout<<"Initially: "<< name << endl;
+    reverseCharArray(name);
+    cout<<"After reversal process: "<< name << endl; 
+
     return 0;
 }
