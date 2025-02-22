@@ -15,17 +15,48 @@ int getLength(char name[]){
 }
 
 //Reverse string function 
-int reverseCharArray(char name[]){
-    int i = 0;
-    int n = getLength(name);
+// int reverseCharArray(char name[]){
+//     int i = 0;
+//     int n = getLength(name);
+//     int j = n-1;
+
+//     while(i<=j){  //i>j - we have to stop
+//         swap(name[i], name[j]);
+//         i++;
+//         j--;
+
+//     }
+// }
+
+//replace function 
+// void replaceSpaces(char sentence[ ]){
+
+//     int i = 0;
+//     int n = strlen(sentence);
+//     //traversal
+//     for(int i=0; i<n; i++){
+//         if(sentence[i] == ' '){
+//             sentence[i] = '@';
+//         }
+//     }
+// }
+
+//------------palndrome function 
+bool checkPalindrome(char word[]){
+    int i=0;
+    int n=strlen(word);
     int j = n-1;
 
-    while(i<=j){  //i>j - we have to stop
-        swap(name[i], name[j]);
-        i++;
-        j--;
-
+    while(i <= j){
+        if(word[i] != word[j]){
+            return false;
+        }
+        else{
+            i++;
+            j--;
+        }
     }
+    return true;  
 }
 
 int main(){
@@ -59,15 +90,26 @@ int main(){
     // cout<<arr;
 
     //------------find the length call 
-    char name[100];
-    cin >> name;
+    // char name[100];
+    // cin >> name;
 
-    cout<<"Length is: " << getLength(name) << endl;
+    // cout<<"Length is: " << getLength(name) << endl;
 
-    //reverse fun call
-    cout<<"Initially: "<< name << endl;
-    reverseCharArray(name);
-    cout<<"After reversal process: "<< name << endl; 
+    // //reverse fun call
+    // cout<<"Initially: "<< name << endl;
+    // reverseCharArray(name);
+    // cout<<"After reversal process: "<< name << endl; 
 
+    //-----------------
+    // char sentence[100];
+    // cin.getline(sentence, 100); //space me input 
+
+    // replaceSpaces(sentence);
+    // cout<<" printing sentence " << endl << sentence << endl;
+    
+    //-----------------
+    char arr[100] = "naman";
+    cout<<"palindrome check: " << checkPalindrome(arr);
+    
     return 0;
 }
